@@ -93,9 +93,9 @@ public with sharing class TriggerTest {
                 Name = 'Test Account ' + i,
                 ShippingStreet = '123 Test St ' + i,
                 ShippingCity = 'Test City ' + i,
-                ShippingState = 'TS',
+                ShippingState = 'Manitoba',
                 ShippingPostalCode = '12345',
-                ShippingCountry = 'Test Country ' + i,
+                ShippingCountry = 'Canada',
                 AnnualRevenue = i
             );
             accountsToInsert.add(acc);
@@ -121,9 +121,9 @@ public with sharing class TriggerTest {
         for (Integer i = 0; i < insertedAccounts.size(); i++) {
             System.assertEquals('123 Test St ' + i, insertedAccounts[i].BillingStreet, 'BillingStreet not correctly copied for account ' + i + '.');
             System.assertEquals('Test City ' + i, insertedAccounts[i].BillingCity, 'BillingCity not correctly copied for account ' + i + '.');
-            System.assertEquals('TS', insertedAccounts[i].BillingState, 'BillingState not correctly copied for account ' + i + '.');
+            System.assertEquals('Manitoba', insertedAccounts[i].BillingState, 'BillingState not correctly copied for account ' + i + '.');
             System.assertEquals('12345', insertedAccounts[i].BillingPostalCode, 'BillingPostalCode not correctly copied for account ' + i + '.');
-            System.assertEquals('Test Country ' + i, insertedAccounts[i].BillingCountry, 'BillingCountry not correctly copied for account ' + i + '.');
+            System.assertEquals('Canada', insertedAccounts[i].BillingCountry, 'BillingCountry not correctly copied for account ' + i + '.');
             insertedAccounts[i].ShippingStreet = '321 Test St';
         }
 
@@ -395,6 +395,7 @@ public with sharing class TriggerTest {
 
         for (Opportunity opp : opportunitiesToInsert) {
             opp.Primary_Contact__c = null;
+            
         }
         update opportunitiesToInsert;
         Test.stopTest();
